@@ -33,3 +33,6 @@ RUN ALPINE_GLIBC_BASE_URL="https://github.com/sgerrand/alpine-pkg-glibc/releases
         "$ALPINE_GLIBC_I18N_PACKAGE_FILENAME"
 
 ENV LANG=C.UTF-8
+ENV GLIBC_PATH="/usr/glibc-compat"
+ENV GLIBC_LIBRARY_PATH="$GLIBC_PATH/lib"
+ENV GLIBC_LD_LINUX_SO="$GLIBC_LIBRARY_PATH/ld-linux-x86-64.so.2"
