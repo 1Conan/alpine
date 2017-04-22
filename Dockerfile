@@ -1,5 +1,5 @@
-FROM alpine:3.5
-MAINTAINER Adam Dodman <adam.dodman@gmx.com>
+FROM alpine:latest
+MAINTAINER Oskari Rauta <oskari.rauta@gmail.com>
 
 ENV DESTDIR="/glibc"
 ENV GLIBC_LIBRARY_PATH="$DESTDIR/lib" DEBS="libc6 libgcc1 libstdc++6"
