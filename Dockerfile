@@ -8,8 +8,9 @@ ENV LD_LIBRARY_PATH="/lib:/usr/lib"
 
 RUN apk add --update --no-cache openrc \
  && rm -rf /var/cache/apk/** \
- && rm -rf /etc/init.d/** \
+ && cp /etc/inittab /inittab.bak \
  && rm -f /etc/inittab
+# && rm -rf /etc/init.d/** \
 # && rm -f /lib/rc/sh/openrc-run.sh
 
 COPY inittab /etc/inittab
