@@ -7,11 +7,7 @@ ENV TERM="xterm"
 ENV LD_LIBRARY_PATH="/lib:/usr/lib"
 
 RUN apk add --update --no-cache openrc \
- && rm -rf /var/cache/apk/** \
- && cp /etc/inittab /inittab.bak \
- && rm -f /etc/inittab
-
-COPY inittab /etc/inittab
+ && rm -rf /var/cache/apk/**
 
 # Tell openrc its running inside a container, till now that has meant LXC
 RUN sed -i 's/#rc_sys=""/rc_sys="lxc"/g' /etc/rc.conf \
@@ -21,6 +17,8 @@ RUN sed -i 's/#rc_sys=""/rc_sys="lxc"/g' /etc/rc.conf \
  && echo 'rc_env_allow="*"' >> /etc/rc.conf \
 # no need for loggers
  && sed -i 's/^#\(rc_logger="YES"\)$/\1/' /etc/rc.conf \
+# remove sysvinit runlevels
+ && sed -i '/::sysinit:/d' /etc/inittab \
 # can't get ttys unless you run the container in privileged mode
  && sed -i '/tty/d' /etc/inittab \
 # can't set hostname since docker sets it
