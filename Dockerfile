@@ -17,5 +17,7 @@ COPY openrc-run.sh /lib/rc/sh/openrc-run.sh
 
 RUN chmod +x /lib/rc/sh/openrc-run.sh
 
-ENTRYPOINT [ "/sbin/init" ]
 WORKDIR /
+
+ENTRYPOINT [ "/sbin/init" ]
+CMD []
