@@ -5,3 +5,7 @@ ENV TZ=""
 ENV LANG="C.UTF-8"
 ENV TERM="xterm"
 ENV LD_LIBRARY_PATH="/lib:/usr/lib"
+
+apk add --update openrc
+
+RUN rm -rf /var/cache/apk/**
