@@ -1,0 +1,10 @@
+# /etc/inittab
+
+::sysinit:/sbin/openrc default
+
+# Stuff to do for the 3-finger salute
+::ctrlaltdel:/sbin/reboot
+
+# Stuff to do before rebooting
+::shutdown:/sbin/openrc shutdown
+
