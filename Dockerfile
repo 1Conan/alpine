@@ -15,5 +15,7 @@ RUN apk add --update --no-cache openrc \
 COPY inittab /etc/inittab
 COPY openrc-run.sh /lib/rc/sh/openrc-run.sh
 
+RUN chmod +x /lib/rc/sh/openrc-run.sh
+
 ENTRYPOINT [ "/sbin/init" ]
 WORKDIR /
