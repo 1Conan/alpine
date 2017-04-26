@@ -6,7 +6,7 @@ ENV LANG="C.UTF-8"
 ENV TERM="xterm"
 ENV LD_LIBRARY_PATH="/lib:/usr/lib"
 
-RUN apk add --update --no-cache openrc sudo \
+RUN apk add --update --no-cache openrc \
  && rm -rf /var/cache/apk/** \
  && rm -rf /etc/init.d/** \
  && rm -f /etc/inittab \
