@@ -1,6 +1,6 @@
 # /etc/inittab
 
-::sysinit:/sbin/openrc default
+::wait:/sbin/openrc default
 
 # Stuff to do for the 3-finger salute
 ::ctrlaltdel:/sbin/reboot
