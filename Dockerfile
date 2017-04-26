@@ -6,6 +6,14 @@ ENV LANG="C.UTF-8"
 ENV TERM="xterm"
 ENV LD_LIBRARY_PATH="/lib:/usr/lib"
 
-apk add --update --no-cache openrc
+RUN apk add --update --no-cache openrc \
+ && rm -rf /var/cache/apk/** \
+ && rm -rf /etc/init.d/** \
+ && rm -f /etc/inittab \
+ && rm -f /lib/rc/sh/openrc-run.sh
 
-RUN rm -rf /var/cache/apk/**
+COPY inittab /etc/inittab
+COPY openrc-run.sh /lib/rc/sh/openrc-run.sh
+
+ENTRYPOINT [ "/sbin/init" ]
+WORKDIR /
