@@ -30,4 +30,4 @@ RUN sed -i 's/#rc_sys=""/rc_sys="lxc"/g' /etc/rc.conf \
 
 WORKDIR /
 
-CMD ["/sbin/init"]
+ENTRYPOINT ["/sbin/init"]
