@@ -15,13 +15,21 @@ RUN echo "http://dl-cdn.alpinelinux.org/alpine/edge/testing" >> /etc/apk/reposit
  && wget http://ftp.debian.org/debian/pool/main/g/gcc-4.9/libgcc1_4.9.2-10_amd64.deb \
  && wget http://ftp.debian.org/debian/pool/main/g/gcc-4.9/libstdc++6_4.9.2-10_amd64.deb \
 
- && for pkg in "libc6 libgcc1 libstdc++6"; do \
-        mkdir $pkg; \
-        cd $pkg; \
-        ar x ../$pkg*.deb; \
-        tar -xf data.tar.*; \
-        cd ..; \
-    done \
+ && mkdir "libc6" "libgcc1" "libstdc++6" \
+ 
+ && cd libc6 \
+ && ar x ../libc6_2.24-10_amd64.deb \
+ && tar -xf data.tar.* \
+
+ && cd ../libgcc1 \
+ && ar x ../libgcc1_4.9.2-10_amd64.deb \
+ && tar -xf data.tar.* \
+ && cd .. \
+
+ && cd ../libstdc++6 \
+ && ar x ../libstdc++6_4.9.2-10_amd64.deb \
+ && tar -xf data.tar.* \
+ && cd .. \
 
  && mkdir -p $GLIBC_LIBRARY_PATH \
 
