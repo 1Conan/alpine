@@ -5,7 +5,7 @@ MAINTAINER Oskari Rauta <oskari.rauta@gmail.com>
 ENV GLIBC_PATH="/glibc"
 ENV GLIBC_LIBRARY_PATH="$GLIBC_PATH/lib"
 ENV GLIBC_LD_LINUX_SO="$GLIBC_LIBRARY_PATH/ld-linux-x86-64.so.2"
-ENV LD_LIBRARY_PATH="/lib:/usr/lib:$GLIBC_PATH/lib"
+ENV LD_LIBRARY_PATH="/lib:/usr/lib:$GLIBC_LIBRARY_PATH"
 
 WORKDIR /tmp
 
