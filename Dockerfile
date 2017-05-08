@@ -19,22 +19,22 @@ RUN mkdir "libc6" "libgcc1" "libstdc++6" \
  
  && cd libc6 \
  && ar x ../libc6_2.24-10_amd64.deb \
- && tar -xf data.tar.* \
+ && tar -xf data.tar.xz \
 
  && cd ../libgcc1 \
  && ar x ../libgcc1_4.9.2-10_amd64.deb \
- && tar -xf data.tar.* \
+ && tar -xf data.tar.xz \
 
  && cd ../libstdc++6 \
  && ar x ../libstdc++6_4.9.2-10_amd64.deb \
- && tar -xf data.tar.*
+ && tar -xf data.tar.xz
 
 RUN cd .. \
  && mkdir -p $GLIBC_LIBRARY_PATH \
 
- && mv libc6/lib/x86_64-linux-gnu/* $GLIBC_LIBRARY_PATH \
- && mv libgcc1/lib/x86_64-linux-gnu/* $GLIBC_LIBRARY_PATH \
- && mv libstdc++6/usr/lib/x86_64-linux-gnu/* $GLIBC_LIBRARY_PATH
+ && mv libc6/lib/x86_64-linux-gnu/** $GLIBC_LIBRARY_PATH \
+ && mv libgcc1/lib/x86_64-linux-gnu/** $GLIBC_LIBRARY_PATH \
+ && mv libstdc++6/usr/lib/x86_64-linux-gnu/** $GLIBC_LIBRARY_PATH
 
 RUN apk del --no-cache xz binutils \
  && rm -rf /tmp/* \
