@@ -13,9 +13,9 @@ RUN echo "http://dl-cdn.alpinelinux.org/alpine/edge/testing" >> /etc/apk/reposit
  && apk add --no-cache xz binutils patchelf \
  && wget http://ftp.debian.org/debian/pool/main/g/glibc/libc6_2.24-10_amd64.deb \
  && wget http://ftp.debian.org/debian/pool/main/g/gcc-4.9/libgcc1_4.9.2-10_amd64.deb \
- && wget http://ftp.debian.org/debian/pool/main/g/gcc-4.9/libstdc++6_4.9.2-10_amd64.deb \
+ && wget http://ftp.debian.org/debian/pool/main/g/gcc-4.9/libstdc++6_4.9.2-10_amd64.deb
 
- && mkdir "libc6" "libgcc1" "libstdc++6" \
+RUN mkdir "libc6" "libgcc1" "libstdc++6" \
  
  && cd libc6 \
  && ar x ../libc6_2.24-10_amd64.deb \
@@ -24,19 +24,19 @@ RUN echo "http://dl-cdn.alpinelinux.org/alpine/edge/testing" >> /etc/apk/reposit
  && cd ../libgcc1 \
  && ar x ../libgcc1_4.9.2-10_amd64.deb \
  && tar -xf data.tar.* \
- && cd .. \
 
  && cd ../libstdc++6 \
  && ar x ../libstdc++6_4.9.2-10_amd64.deb \
- && tar -xf data.tar.* \
- && cd .. \
+ && tar -xf data.tar.*
 
+RUN cd .. \
  && mkdir -p $GLIBC_LIBRARY_PATH \
 
  && mv libc6/lib/x86_64-linux-gnu/* $GLIBC_LIBRARY_PATH \
  && mv libgcc1/lib/x86_64-linux-gnu/* $GLIBC_LIBRARY_PATH \
- && mv libstdc++6/usr/lib/x86_64-linux-gnu/* $GLIBC_LIBRARY_PATH \
- && apk del --no-cache xz binutils \
+ && mv libstdc++6/usr/lib/x86_64-linux-gnu/* $GLIBC_LIBRARY_PATH
+
+RUN apk del --no-cache xz binutils \
  && rm -rf /tmp/* \
  && rm -f /root/.wget-hsts
 
