@@ -8,7 +8,7 @@ ENV GLIBC_LD_LINUX_SO="$GLIBC_LIBRARY_PATH/ld-linux-x86-64.so.2"
 ENV LD_LIBRARY_PATH="/lib:/usr/lib:$GLIBC_LIBRARY_PATH"
 
 RUN cd /tmp \
- && apk add --no-cache --repository http://dl-cdn.alpinelinux.org/alpine/edge/testing xz binutils patchelf \
+ && apk add --no-cache --repository "http://dl-cdn.alpinelinux.org/alpine/edge/testing" xz binutils patchelf \
  && wget http://ftp.debian.org/debian/pool/main/g/glibc/libc6_2.24-10_amd64.deb \
  && wget http://ftp.debian.org/debian/pool/main/g/gcc-4.9/libgcc1_4.9.2-10_amd64.deb \
  && wget http://ftp.debian.org/debian/pool/main/g/gcc-4.9/libstdc++6_4.9.2-10_amd64.deb
