@@ -1,5 +1,5 @@
 FROM arm64v8/alpine:latest
-MAINTAINER Oskari Rauta <oskari.rauta@gmail.com>
+MAINTAINER 1Conan <me@1conan.com>
 
 ENV TZ=""
 ENV LANG="C"
