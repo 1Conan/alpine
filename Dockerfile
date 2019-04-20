@@ -1,4 +1,4 @@
-FROM alpine:latest
+FROM arm64v8/alpine:latest
 MAINTAINER Oskari Rauta <oskari.rauta@gmail.com>
 
 ENV TZ=""
